@@ -1,9 +1,9 @@
 {
   "project_info": {
-    "project_number": "1096573253737",
-    "firebase_url": "https://beerpro-6393c.firebaseio.com",
-    "project_id": "beerpro-6393c",
-    "storage_bucket": "beerpro-6393c.appspot.com"
+    "project_number": "<FirebaseProjectNumber>",
+    "firebase_url": "https://<FirebaseProjectId>.firebaseio.com",
+    "project_id": "<FirebaseProjectId>",
+    "storage_bucket": "<FirebaseProjectId>.appspot.com"
   },
   "client": [
     {
@@ -29,7 +29,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDjyHIa6d8u5UkHQ-JH1bApIcZREG0AUZo"
+          "current_key": "<FirebaseApiKey>"
         }
       ],
       "services": {
