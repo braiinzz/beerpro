@@ -1,9 +1,9 @@
-package ch.beerpro.presentation.profile.myfridge;
+package ch.beerpro.presentation.utils;
 
 import android.widget.ImageView;
 
 import ch.beerpro.domain.models.Beer;
 
-interface OnFridgelistInteractionListener {
+public interface OnDefaultBeerInteractionListener {
     void onMoreClickedListener(ImageView photo, Beer beer);
 }

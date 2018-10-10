@@ -22,7 +22,7 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-public class FridgeActivity extends AppCompatActivity implements OnFridgelistInteractionListener {
+public class FridgeActivity extends AppCompatActivity implements OnFridgeInteractionListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 

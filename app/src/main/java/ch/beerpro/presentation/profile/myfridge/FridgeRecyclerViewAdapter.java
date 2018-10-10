@@ -4,29 +4,23 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
-
-import com.bumptech.glide.request.RequestOptions;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import ch.beerpro.GlideApp;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.FridgeItem;
+import ch.beerpro.presentation.utils.DefaultBeerViewHolder;
 import ch.beerpro.presentation.utils.EntityPairDiffItemCallback;
+import ch.beerpro.presentation.utils.OnDefaultBeerInteractionListener;
 
 public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeItem, Beer>, FridgeRecyclerViewAdapter.ViewHolder> {
     private static final DiffUtil.ItemCallback<Pair<FridgeItem, Beer>> DIFF_CALLBACK = new EntityPairDiffItemCallback<>();
-    private final OnFridgelistInteractionListener listener;
+    private final OnFridgeInteractionListener listener;
 
-    public FridgeRecyclerViewAdapter(OnFridgelistInteractionListener listener) {
+    public FridgeRecyclerViewAdapter(OnFridgeInteractionListener listener) {
         super(DIFF_CALLBACK);
         this.listener = listener;
     }
@@ -45,41 +39,15 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeItem, Beer
         holder.bind(item.first, item.second, listener);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-
-        @BindView(R.id.name)
-        TextView name;
-
-        @BindView(R.id.manufacturer)
-        TextView manufacturer;
-
-        @BindView(R.id.category)
-        TextView category;
-
-        @BindView(R.id.photo)
-        ImageView photo;
-
-        @BindView(R.id.ratingBar)
-        RatingBar ratingBar;
-
-        @BindView(R.id.numRatings)
-        TextView numRatings;
+    class ViewHolder extends DefaultBeerViewHolder {
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        void bind(FridgeItem fridgeItem, Beer beer, OnFridgelistInteractionListener listener) {
-            name.setText(beer.getName());
-            manufacturer.setText(beer.getManufacturer());
-            category.setText(beer.getCategory());
-            ratingBar.setNumStars(5);
-            ratingBar.setRating(beer.getAvgRating());
-            numRatings.setText(itemView.getResources().getString(R.string.fmt_num_ratings, beer.getNumRatings()));
-            GlideApp.with(itemView).load(beer.getPhoto()).apply(new RequestOptions().override(240, 240).centerInside())
-                    .into(photo);
-            itemView.setOnClickListener(v -> listener.onMoreClickedListener(photo, beer));
+        public void bind(FridgeItem fridgeItem,Beer beer, OnDefaultBeerInteractionListener listener) {
+            super.bind(beer, listener);
         }
     }
 }

@@ -19,6 +19,7 @@ import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.MyBeer;
 import ch.beerpro.domain.models.MyBeerFromRating;
 import ch.beerpro.domain.models.MyBeerFromWishlist;
+import ch.beerpro.presentation.utils.DefaultBeerViewHolder;
 import ch.beerpro.presentation.utils.DrawableHelpers;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -66,26 +67,7 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
         holder.bind(entry, listener);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-
-        @BindView(R.id.name)
-        TextView name;
-
-        @BindView(R.id.manufacturer)
-        TextView manufacturer;
-
-        @BindView(R.id.category)
-        TextView category;
-
-        @BindView(R.id.photo)
-        ImageView photo;
-
-        @BindView(R.id.ratingBar)
-        RatingBar ratingBar;
-
-        @BindView(R.id.numRatings)
-        TextView numRatings;
-
+    class ViewHolder extends DefaultBeerViewHolder {
         @BindView(R.id.addedAt)
         TextView addedAt;
 
@@ -103,17 +85,7 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
         public void bind(MyBeer entry, OnMyBeerItemInteractionListener listener) {
 
             Beer item = entry.getBeer();
-
-            name.setText(item.getName());
-            manufacturer.setText(item.getManufacturer());
-            category.setText(item.getCategory());
-            name.setText(item.getName());
-            GlideApp.with(itemView).load(item.getPhoto()).apply(new RequestOptions().override(240, 240).centerInside())
-                    .into(photo);
-            ratingBar.setNumStars(5);
-            ratingBar.setRating(item.getAvgRating());
-            numRatings.setText(itemView.getResources().getString(R.string.fmt_num_ratings, item.getNumRatings()));
-            itemView.setOnClickListener(v -> listener.onMoreClickedListener(photo, item));
+            super.bind(item, listener);
             removeFromWishlist.setOnClickListener(v -> listener.onWishClickedListener(item));
 
             String formattedDate =

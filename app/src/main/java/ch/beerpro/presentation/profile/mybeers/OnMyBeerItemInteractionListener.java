@@ -1,11 +1,8 @@
 package ch.beerpro.presentation.profile.mybeers;
 
-import android.widget.ImageView;
 import ch.beerpro.domain.models.Beer;
+import ch.beerpro.presentation.utils.OnDefaultBeerInteractionListener;
 
-public interface OnMyBeerItemInteractionListener {
-
-    void onMoreClickedListener(ImageView photo, Beer item);
-
+public interface OnMyBeerItemInteractionListener extends OnDefaultBeerInteractionListener {
     void onWishClickedListener(Beer item);
 }
