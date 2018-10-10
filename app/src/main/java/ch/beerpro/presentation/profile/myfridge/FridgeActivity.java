@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -28,6 +29,9 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeInterac
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+
+    @BindView(R.id.emptyView)
+    View emptyView;
 
     private FridgeViewModel model;
     private FridgeRecyclerViewAdapter adapter;
@@ -53,6 +57,13 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeInterac
 
     private void updateFridge(List<Pair<FridgeItem,Beer>> pairs) {
         adapter.submitList(pairs);
+        if (pairs.isEmpty()) {
+            emptyView.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.INVISIBLE);
+        } else {
+            emptyView.setVisibility(View.INVISIBLE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
