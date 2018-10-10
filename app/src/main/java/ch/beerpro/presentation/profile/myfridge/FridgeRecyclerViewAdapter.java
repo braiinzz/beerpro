@@ -8,21 +8,23 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.request.RequestOptions;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ch.beerpro.GlideApp;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.FridgeItem;
 import ch.beerpro.presentation.utils.EntityPairDiffItemCallback;
 
 public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeItem, Beer>, FridgeRecyclerViewAdapter.ViewHolder> {
-
     private static final DiffUtil.ItemCallback<Pair<FridgeItem, Beer>> DIFF_CALLBACK = new EntityPairDiffItemCallback<>();
-    private OnFridgelistInteractionListener listener;
+    private final OnFridgelistInteractionListener listener;
 
     public FridgeRecyclerViewAdapter(OnFridgelistInteractionListener listener) {
         super(DIFF_CALLBACK);
@@ -65,7 +67,7 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeItem, Beer
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         void bind(FridgeItem fridgeItem, Beer beer, OnFridgelistInteractionListener listener) {
@@ -75,8 +77,9 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeItem, Beer
             ratingBar.setNumStars(5);
             ratingBar.setRating(beer.getAvgRating());
             numRatings.setText(itemView.getResources().getString(R.string.fmt_num_ratings, beer.getNumRatings()));
+            GlideApp.with(itemView).load(beer.getPhoto()).apply(new RequestOptions().override(240, 240).centerInside())
+                    .into(photo);
             itemView.setOnClickListener(v -> listener.onMoreClickedListener(photo, beer));
-
         }
     }
 }
