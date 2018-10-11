@@ -8,7 +8,7 @@ android {
     }
     defaultConfig {
         applicationId "ch.beerpro"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 10
         versionName "Beta 1.0"
@@ -25,6 +25,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    productFlavors {
+    }
 }
 
 dependencies {
@@ -37,33 +39,27 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.google.firebase:firebase-firestore:17.1.0'
     implementation 'com.firebaseui:firebase-ui-firestore:4.0.0'
-
     // an alternative to picasso
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-    implementation("com.github.bumptech.glide:recyclerview-integration:4.8.0") {
+    implementation('com.github.bumptech.glide:recyclerview-integration:4.8.0') {
         // Excludes the support library because it's already included by Glide.
         transitive = false
     }
-
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.github.yalantis:ucrop:2.2.2-native'
     implementation 'com.github.tajchert:nammu:1.2.0'
     implementation 'com.github.jkwiecien:EasyImage:2.1.0'
-
     // lombok
     // before upgrading, check if this has been resolved:
     // https://github.com/mplushnikov/lombok-intellij-plugin/issues/496
-    compileOnly "org.projectlombok:lombok:1.16.20"
+    compileOnly 'org.projectlombok:lombok:1.16.20'
     annotationProcessor "org.projectlombok:lombok:1.16.20"
-
     // ButterKnife
     implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
-
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
-
+    implementation 'org.apache.commons:commons-lang3:3.7'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'

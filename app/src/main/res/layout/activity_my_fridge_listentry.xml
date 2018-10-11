@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
@@ -11,5 +13,60 @@
         android:orientation="vertical">
 
         <include layout="@layout/content_beer_listentry_base" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/listentry_margin_start"
+                android:layout_marginTop="@dimen/listentry_margin_top"
+                android:text="@string/fridge_amount_description"
+                android:textSize="@dimen/listentry_text_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/listentry_margin_start"
+                android:layout_marginBottom="@dimen/listentry_margin_top"
+                android:text="TextView"
+                android:textSize="@dimen/listentry_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <Button
+                android:id="@+id/addToFridge"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_exposure_plus_1_black_24dp"
+                android:drawableTint="@color/colorPrimary"
+                android:text="Hinzufügen"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/listentry_button_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/removeFromFridge"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_exposure_neg_1_black_24dp"
+                android:drawableTint="@color/colorPrimary"
+                android:text="Entfernen"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/listentry_button_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/addToFridge" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
