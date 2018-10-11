@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Optional;
 import ch.beerpro.GlideApp;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
@@ -120,10 +121,9 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
 
     @OnClick(R.id.actionsButton)
     public void showBottomSheetDialog() {
-        View view = getLayoutInflater().inflate(R.layout.single_bottom_sheet_dialog, null);
-        BottomSheetDialog dialog = new BottomSheetDialog(this);
-        dialog.setContentView(view);
-        dialog.show();
+        SingleBottomSheetDialogFragment bottomSheetDialog = new SingleBottomSheetDialogFragment();
+        bottomSheetDialog.show(getSupportFragmentManager(), bottomSheetDialog.getTag());
+        // TODO: Show fridge or inform to user, that beer is added to fridge
     }
 
     private void updateBeer(Beer item) {
