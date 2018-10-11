@@ -104,7 +104,7 @@
     <string name="title_activity_mybeers">Meine Biere</string>
     <string name="action_search">Bier suchen</string>
     <string name="title_activity_fridge">Kühlschrank</string>
-    <string name="fridge_amount_description">anzahl im Kühlschrank</string>
+    <string name="fridge_amount_description">Anzahl im Kühlschrank</string>
     <string name="beer">Bier</string>
     <string name="beers">Biere</string>
 </resources>
