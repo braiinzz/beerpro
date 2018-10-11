@@ -49,7 +49,7 @@ public class FridgeRepository {
         return addFridgeItem(userId, itemId, 1);
     }
 
-    public Task<Void> addFridgeItem(String userId, String itemId, Integer amount) {
+    public Task<Void> addFridgeItem(String userId, String itemId, int amount) {
         return updateAmount(userId, itemId, amount);
     }
 
@@ -57,18 +57,21 @@ public class FridgeRepository {
         return removeFridgeItem(userId, itemId, 1);
     }
 
-    public Task<Void> removeFridgeItem(String userId, String itemId, Integer amount) {
+    public Task<Void> removeFridgeItem(String userId, String itemId, int amount) {
         return updateAmount(userId, itemId, -amount);
     }
 
-    private Task<Void> updateAmount(String userId, String itemId, Integer amount) {
+    private Task<Void> updateAmount(String userId, String itemId, int amount) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String fridgeItemId = FridgeItem.generateId(userId, itemId);
         DocumentReference fridgeItemQuery = db.collection(FridgeItem.COLLECTION).document(fridgeItemId);
 
         return fridgeItemQuery.get().continueWithTask(task -> {
             if (task.isSuccessful() && task.getResult().exists()) {
-                int currentAmount = (Integer) task.getResult().get(FridgeItem.FIELD_AMOUNT);
+                long currentAmount = task.getResult().getLong(FridgeItem.FIELD_AMOUNT);
+                if (currentAmount + amount == 0) {
+                    return fridgeItemQuery.delete();
+                }
                 return fridgeItemQuery.update(FridgeItem.FIELD_AMOUNT, currentAmount + amount);
             } else if (task.isSuccessful()) {
                 return fridgeItemQuery.set(new FridgeItem(userId, itemId, amount));

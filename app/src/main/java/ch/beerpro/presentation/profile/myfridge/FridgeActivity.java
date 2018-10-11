@@ -84,4 +84,14 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeInterac
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, photo, "image");
         startActivity(intent, options.toBundle());
     }
+
+    @Override
+    public void onAddClickedListener(FridgeItem fridgeItem) {
+        model.addToFridge(fridgeItem);
+    }
+
+    @Override
+    public void onRemoveClickedListener(FridgeItem fridgeItem) {
+        model.removeFromFridge(fridgeItem);
+    }
 }
