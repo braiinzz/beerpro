@@ -33,8 +33,10 @@
                 android:text="auf der Wunschliste seit"
                 android:textSize="@dimen/listentry_text_size"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="8dp" />
+                android:layout_marginStart="@dimen/listentry_margin_start"
+                android:layout_marginTop="@dimen/listentry_margin_top"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/addedAt"
