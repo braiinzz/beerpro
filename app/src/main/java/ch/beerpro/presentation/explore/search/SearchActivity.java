@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
+import ch.beerpro.domain.models.FridgeItem;
 import ch.beerpro.presentation.details.DetailsActivity;
 import ch.beerpro.presentation.explore.search.beers.SearchResultFragment;
 import ch.beerpro.presentation.explore.search.suggestions.SearchSuggestionsFragment;
@@ -105,7 +106,22 @@ public class SearchActivity extends AppCompatActivity
     }
 
     @Override
+    public void onAddNewClickedListener(Beer item) {
+
+    }
+
+    @Override
     public void onWishClickedListener(Beer item) {
         searchViewModel.toggleItemInWishlist(item.getId());
+    }
+
+    @Override
+    public void onAddClickedListener(FridgeItem fridgeItem) {
+
+    }
+
+    @Override
+    public void onRemoveClickedListener(FridgeItem fridgeItem) {
+
     }
 }

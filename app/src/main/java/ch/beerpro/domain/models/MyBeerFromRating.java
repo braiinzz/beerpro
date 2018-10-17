@@ -8,6 +8,7 @@ import java.util.Date;
 public class MyBeerFromRating implements MyBeer {
     private Rating rating;
     private Beer beer;
+    private FridgeItem fridgeItem;
 
     public MyBeerFromRating(Rating rating, Beer beer) {
         this.rating = rating;

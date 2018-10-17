@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+
+import org.apache.commons.lang3.NotImplementedException;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -14,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
+import ch.beerpro.domain.models.FridgeItem;
 import ch.beerpro.presentation.details.DetailsActivity;
 
 public class MyBeersActivity extends AppCompatActivity implements OnMyBeerItemInteractionListener {
@@ -82,7 +86,22 @@ public class MyBeersActivity extends AppCompatActivity implements OnMyBeerItemIn
     }
 
     @Override
+    public void onAddNewClickedListener(Beer item) {
+        model.addToFridge(item);
+    }
+
+    @Override
     public void onWishClickedListener(Beer item) {
         model.toggleItemInWishlist(item.getId());
+    }
+
+    @Override
+    public void onAddClickedListener(FridgeItem fridgeItem) {
+        model.addToFridge(fridgeItem);
+    }
+
+    @Override
+    public void onRemoveClickedListener(FridgeItem fridgeItem) {
+        model.removeFromFridge(fridgeItem);
     }
 }

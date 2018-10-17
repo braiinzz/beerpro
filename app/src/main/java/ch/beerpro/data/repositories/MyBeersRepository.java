@@ -25,27 +25,32 @@ public class MyBeersRepository {
         List<Rating> ratings = input.getRatings();
         List<FridgeItem> fridgeItems = input.getFridgeItems();
         HashMap<String, Beer> beers = input.getBeers();
-        ArrayList<MyBeer> result = new ArrayList<>();
+        HashMap<String, MyBeer> resultHashMap = new HashMap<>();
+
         Set<String> beersAlreadyOnTheList = new HashSet<>();
         for (Wish wish : wishes) {
             String beerId = wish.getBeerId();
-            result.add(new MyBeerFromWishlist(wish, beers.get(beerId)));
+            resultHashMap.put(beerId, new MyBeerFromWishlist(wish, beers.get(beerId)));
             beersAlreadyOnTheList.add(beerId);
-        }
-        for (FridgeItem fridgeItem : fridgeItems) {
-            String beerId = fridgeItem.getBeerId();
-            if (!beersAlreadyOnTheList.contains(beerId)) {
-                result.add(new MyBeerFromFridge(fridgeItem, beers.get(beerId)));
-                beersAlreadyOnTheList.add(beerId);
-            }
         }
         for (Rating rating : ratings) {
             String beerId = rating.getBeerId();
             if (!beersAlreadyOnTheList.contains(beerId)) {
-                result.add(new MyBeerFromRating(rating, beers.get(beerId)));
+                resultHashMap.put(beerId, new MyBeerFromRating(rating, beers.get(beerId)));
                 beersAlreadyOnTheList.add(beerId);
             }
         }
+        for (FridgeItem fridgeItem : fridgeItems) {
+            String beerId = fridgeItem.getBeerId();
+            if (!beersAlreadyOnTheList.contains(beerId)) {
+                resultHashMap.put(beerId, new MyBeerFromFridge(fridgeItem, beers.get(beerId)));
+            } else {
+                MyBeer myBeer = resultHashMap.get(beerId);
+                myBeer.setFridgeItem(fridgeItem);
+                resultHashMap.put(beerId, myBeer);
+            }
+        }
+        ArrayList<MyBeer> result = new ArrayList<>(resultHashMap.values());
         Collections.sort(result, (r1, r2) -> r2.getDate().compareTo(r1.getDate()));
         return result;
     }

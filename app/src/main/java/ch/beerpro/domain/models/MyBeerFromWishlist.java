@@ -8,6 +8,7 @@ import java.util.Date;
 public class MyBeerFromWishlist implements MyBeer {
     private Wish wish;
     private Beer beer;
+    private FridgeItem fridgeItem;
 
     public MyBeerFromWishlist(Wish wish, Beer beer) {
         this.wish = wish;

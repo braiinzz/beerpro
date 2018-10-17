@@ -11,6 +11,7 @@ import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.FridgeItem;
 import ch.beerpro.presentation.details.DetailsActivity;
+import ch.beerpro.presentation.utils.OnFridgeInteractionListener;
 import lombok.val;
 
 import android.app.ActivityOptions;

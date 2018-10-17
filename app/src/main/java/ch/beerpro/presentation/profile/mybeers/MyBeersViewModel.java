@@ -25,7 +25,9 @@ public class MyBeersViewModel extends ViewModel implements CurrentUser {
     private final MutableLiveData<String> searchTerm = new MutableLiveData<>();
 
     private final WishlistRepository wishlistRepository;
+    private final FridgeRepository fridgeRepository;
     private final LiveData<List<MyBeer>> myFilteredBeers;
+    private final MutableLiveData<String> currentUserId;
 
     public MyBeersViewModel() {
 
@@ -33,10 +35,10 @@ public class MyBeersViewModel extends ViewModel implements CurrentUser {
         BeersRepository beersRepository = new BeersRepository();
         MyBeersRepository myBeersRepository = new MyBeersRepository();
         RatingsRepository ratingsRepository = new RatingsRepository();
-        FridgeRepository fridgeRepository = new FridgeRepository();
+        fridgeRepository = new FridgeRepository();
 
         LiveData<List<Beer>> allBeers = beersRepository.getAllBeers();
-        MutableLiveData<String> currentUserId = new MutableLiveData<>();
+        currentUserId = new MutableLiveData<>();
         LiveData<List<Wish>> myWishlist = wishlistRepository.getMyWishlist(currentUserId);
         LiveData<List<Rating>> myRatings = ratingsRepository.getMyRatings(currentUserId);
         LiveData<List<FridgeItem>> myFridgeItems = fridgeRepository.getMyFridgeItems(currentUserId);
@@ -76,5 +78,17 @@ public class MyBeersViewModel extends ViewModel implements CurrentUser {
 
     public void setSearchTerm(String searchTerm) {
         this.searchTerm.setValue(searchTerm);
+    }
+
+    public void addToFridge(FridgeItem fridgeItem) {
+        fridgeRepository.addFridgeItem(currentUserId.getValue(), fridgeItem.getBeerId());
+    }
+
+    public void removeFromFridge(FridgeItem fridgeItem) {
+        fridgeRepository.removeFridgeItem(currentUserId.getValue(), fridgeItem.getBeerId());
+    }
+
+    public void addToFridge(Beer item) {
+        fridgeRepository.addFridgeItem(currentUserId.getValue(), item.getId());
     }
 }

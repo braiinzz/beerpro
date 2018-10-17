@@ -19,9 +19,8 @@ import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.FridgeItem;
 import ch.beerpro.presentation.utils.DefaultBeerViewHolder;
 import ch.beerpro.presentation.utils.EntityPairDiffItemCallback;
-import ch.beerpro.presentation.utils.OnDefaultBeerInteractionListener;
-
-import static androidx.core.content.res.TypedArrayUtils.getString;
+import ch.beerpro.presentation.utils.FridgeBeerViewHolder;
+import ch.beerpro.presentation.utils.OnFridgeInteractionListener;
 
 public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeItem, Beer>, FridgeRecyclerViewAdapter.ViewHolder> {
     private static final DiffUtil.ItemCallback<Pair<FridgeItem, Beer>> DIFF_CALLBACK = new EntityPairDiffItemCallback<>();
@@ -46,13 +45,7 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeItem, Beer
         holder.bind(item.first, item.second, listener);
     }
 
-    class ViewHolder extends DefaultBeerViewHolder {
-        @BindView(R.id.amount)
-        TextView amount;
-        @BindView(R.id.addToFridge)
-        Button addToFridge;
-        @BindView(R.id.removeFromFridge)
-        Button removeFromFridge;
+    class ViewHolder extends FridgeBeerViewHolder {
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,17 +53,7 @@ public class FridgeRecyclerViewAdapter extends ListAdapter<Pair<FridgeItem, Beer
         }
 
         public void bind(FridgeItem fridgeItem, Beer beer, OnFridgeInteractionListener listener) {
-            super.bind(beer, listener);
-            String suffix;
-            if (fridgeItem.getAmount() == 1) {
-                suffix = "Bier";
-            } else {
-                suffix = "Biere";
-            }
-            amount.setText(String.format(Locale.GERMAN,"%d %s", fridgeItem.getAmount(), suffix));
-
-            addToFridge.setOnClickListener(v -> listener.onAddClickedListener(fridgeItem));
-            removeFromFridge.setOnClickListener(v -> listener.onRemoveClickedListener(fridgeItem));
+            super.bind(fridgeItem, beer, listener);
         }
     }
 }
