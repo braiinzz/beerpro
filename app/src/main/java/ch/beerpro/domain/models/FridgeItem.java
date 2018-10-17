@@ -4,6 +4,11 @@ import android.content.Intent;
 
 import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
+
+import java.util.Date;
+
+import javax.annotation.Nonnull;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -18,6 +23,7 @@ public class FridgeItem implements Entity {
     public static final String FIELD_USER_ID = "userId";
     public static final String FIELD_BEER_ID = "beerId";
     public static final String FIELD_AMOUNT = "amount";
+    public static final String FIELD_CREATION_DATE = "creationDate";
 
     @Exclude
     private String id;
@@ -27,6 +33,8 @@ public class FridgeItem implements Entity {
     private String beerId;
     @NonNull
     private Integer amount;
+    @NonNull
+    private Date creationDate;
 
     public static String generateId(String userId, String beerId) {
         return String.format("%s_%s", userId, beerId);

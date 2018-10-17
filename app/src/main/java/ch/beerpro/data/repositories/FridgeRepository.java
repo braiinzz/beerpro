@@ -7,6 +7,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -72,9 +73,10 @@ public class FridgeRepository {
                 if (currentAmount + amount == 0) {
                     return fridgeItemQuery.delete();
                 }
-                return fridgeItemQuery.update(FridgeItem.FIELD_AMOUNT, currentAmount + amount);
+                fridgeItemQuery.update(FridgeItem.FIELD_AMOUNT, currentAmount + amount);
+                return fridgeItemQuery.update(FridgeItem.FIELD_CREATION_DATE, new Date());
             } else if (task.isSuccessful()) {
-                return fridgeItemQuery.set(new FridgeItem(userId, itemId, amount));
+                return fridgeItemQuery.set(new FridgeItem(userId, itemId, amount, new Date()));
             } else {
                 throw task.getException();
             }
