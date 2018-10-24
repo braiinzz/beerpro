@@ -5,21 +5,18 @@ import android.util.Pair;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import ch.beerpro.data.repositories.BeersRepository;
 import ch.beerpro.data.repositories.CurrentUser;
-import ch.beerpro.data.repositories.FridgeRepository;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.FridgeItem;
+import ch.beerpro.presentation.profile.BasicFridgeViewModel;
 
-public class FridgeViewModel extends ViewModel implements CurrentUser {
-    private final MutableLiveData<String> currentUserId = new MutableLiveData<>();
+public class FridgeViewModel extends BasicFridgeViewModel implements CurrentUser {
     private final BeersRepository beersRepository;
-    private final FridgeRepository fridgeRepository;
+
     public FridgeViewModel() {
+        super();
         beersRepository = new BeersRepository();
-        fridgeRepository = new FridgeRepository();
         currentUserId.setValue(getCurrentUser().getUid());
     }
 
@@ -28,11 +25,4 @@ public class FridgeViewModel extends ViewModel implements CurrentUser {
         return fridgeRepository.getMyFridgeWithBeers(currentUserId, allBeers);
     }
 
-    public void addToFridge(FridgeItem fridgeItem) {
-        fridgeRepository.addFridgeItem(currentUserId.getValue(), fridgeItem.getBeerId());
-    }
-
-    public void removeFromFridge(FridgeItem fridgeItem) {
-        fridgeRepository.removeFridgeItem(currentUserId.getValue(), fridgeItem.getBeerId());
-    }
 }

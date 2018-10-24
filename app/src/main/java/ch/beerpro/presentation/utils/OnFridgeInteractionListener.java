@@ -7,6 +7,6 @@ import ch.beerpro.domain.models.FridgeItem;
 import ch.beerpro.presentation.utils.OnDefaultBeerInteractionListener;
 
 public interface OnFridgeInteractionListener extends OnDefaultBeerInteractionListener {
-    void onAddClickedListener(FridgeItem fridgeItem);
-    void onRemoveClickedListener(FridgeItem fridgeItem);
+    void onFridgeAddClickedListener(FridgeItem fridgeItem);
+    void onFridgeRemoveClickedListener(FridgeItem fridgeItem);
 }

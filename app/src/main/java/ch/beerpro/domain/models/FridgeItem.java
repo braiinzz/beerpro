@@ -6,6 +6,8 @@ import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Nonnull;
 
@@ -38,5 +40,13 @@ public class FridgeItem implements Entity {
 
     public static String generateId(String userId, String beerId) {
         return String.format("%s_%s", userId, beerId);
+    }
+
+    public static HashMap<String, FridgeItem> entitiesByBeerId(List<FridgeItem> entries) {
+        HashMap<String, FridgeItem> byId = new HashMap<>();
+        for (FridgeItem entry : entries) {
+            byId.put(entry.getBeerId(), entry);
+        }
+        return byId;
     }
 }

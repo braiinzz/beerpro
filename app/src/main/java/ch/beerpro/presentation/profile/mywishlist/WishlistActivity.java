@@ -16,6 +16,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
+import ch.beerpro.domain.models.FridgeItem;
+import ch.beerpro.domain.models.MyBeer;
 import ch.beerpro.domain.models.Wish;
 import ch.beerpro.presentation.details.DetailsActivity;
 import lombok.val;
@@ -58,7 +60,7 @@ public class WishlistActivity extends AppCompatActivity implements OnWishlistIte
 
     }
 
-    private void updateWishlist(List<Pair<Wish, Beer>> entries) {
+    private void updateWishlist(List<Pair<Wish, MyBeer>> entries) {
         adapter.submitList(entries);
         if (entries.isEmpty()) {
             emptyView.setVisibility(View.VISIBLE);
@@ -90,7 +92,22 @@ public class WishlistActivity extends AppCompatActivity implements OnWishlistIte
     }
 
     @Override
+    public void onFridgeAddNewClickedListener(Beer item) {
+        model.addToFridge(item);
+    }
+
+    @Override
     public void onWishClickedListener(Beer beer) {
         model.toggleItemInWishlist(beer.getId());
+    }
+
+    @Override
+    public void onFridgeAddClickedListener(FridgeItem fridgeItem) {
+        model.addToFridge(fridgeItem);
+    }
+
+    @Override
+    public void onFridgeRemoveClickedListener(FridgeItem fridgeItem) {
+        model.removeFromFridge(fridgeItem);
     }
 }

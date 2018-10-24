@@ -4,6 +4,9 @@ import android.util.Pair;
 import androidx.lifecycle.LiveData;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Entity;
+import ch.beerpro.domain.models.FridgeItem;
+import ch.beerpro.domain.models.MyBeer;
+import ch.beerpro.domain.models.MyBeerFromFridge;
 import ch.beerpro.domain.models.Wish;
 import ch.beerpro.domain.utils.FirestoreQueryLiveData;
 import ch.beerpro.domain.utils.FirestoreQueryLiveDataArray;
@@ -57,16 +60,20 @@ public class WishlistRepository {
         });
     }
 
-    public LiveData<List<Pair<Wish, Beer>>> getMyWishlistWithBeers(LiveData<String> currentUserId,
-                                                                   LiveData<List<Beer>> allBeers) {
-        return map(combineLatest(getMyWishlist(currentUserId), map(allBeers, Entity::entitiesById)), input -> {
-            List<Wish> wishes = input.first;
-            HashMap<String, Beer> beersById = input.second;
+    public LiveData<List<Pair<Wish, MyBeer>>> getMyWishlistWithBeers(LiveData<String> currentUserId,
+                                                                          LiveData<List<FridgeItem>> allFridgeItems,
+                                                                          LiveData<List<Beer>> allBeers) {
+        return map(combineLatest(getMyWishlist(currentUserId), map(allFridgeItems, FridgeItem::entitiesByBeerId), map(allBeers, Entity::entitiesById)), input -> {
+            List<Wish> wishes = input.getLeft();
+            HashMap<String, FridgeItem> fridgeById = input.getMiddle();
+            HashMap<String, Beer> beersById = input.getRight();
 
-            ArrayList<Pair<Wish, Beer>> result = new ArrayList<>();
+            ArrayList<Pair<Wish, MyBeer>> result = new ArrayList<>();
             for (Wish wish : wishes) {
                 Beer beer = beersById.get(wish.getBeerId());
-                result.add(Pair.create(wish, beer));
+                FridgeItem fridgeItem = fridgeById.get(wish.getBeerId());
+                MyBeer myBeer = new MyBeerFromFridge(fridgeItem, beer);
+                result.add(Pair.create(wish, myBeer));
             }
             return result;
         });

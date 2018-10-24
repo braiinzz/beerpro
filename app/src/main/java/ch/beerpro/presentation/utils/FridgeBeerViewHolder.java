@@ -36,7 +36,7 @@ public class FridgeBeerViewHolder extends DefaultBeerViewHolder {
         }
         amount.setText(String.format(Locale.GERMAN, "%d %s", fridgeItem.getAmount(), suffix));
 
-        addToFridge.setOnClickListener(v -> listener.onAddClickedListener(fridgeItem));
-        removeFromFridge.setOnClickListener(v -> listener.onRemoveClickedListener(fridgeItem));
+        addToFridge.setOnClickListener(v -> listener.onFridgeAddClickedListener(fridgeItem));
+        removeFromFridge.setOnClickListener(v -> listener.onFridgeRemoveClickedListener(fridgeItem));
     }
 }

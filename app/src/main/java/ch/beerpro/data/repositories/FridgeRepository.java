@@ -15,6 +15,7 @@ import androidx.lifecycle.LiveData;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Entity;
 import ch.beerpro.domain.models.FridgeItem;
+import ch.beerpro.domain.utils.FirestoreQueryLiveData;
 import ch.beerpro.domain.utils.FirestoreQueryLiveDataArray;
 
 import static androidx.lifecycle.Transformations.map;

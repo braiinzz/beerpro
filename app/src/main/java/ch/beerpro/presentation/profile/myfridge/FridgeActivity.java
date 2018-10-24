@@ -87,12 +87,12 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeInterac
     }
 
     @Override
-    public void onAddClickedListener(FridgeItem fridgeItem) {
+    public void onFridgeAddClickedListener(FridgeItem fridgeItem) {
         model.addToFridge(fridgeItem);
     }
 
     @Override
-    public void onRemoveClickedListener(FridgeItem fridgeItem) {
+    public void onFridgeRemoveClickedListener(FridgeItem fridgeItem) {
         model.removeFromFridge(fridgeItem);
     }
 }
