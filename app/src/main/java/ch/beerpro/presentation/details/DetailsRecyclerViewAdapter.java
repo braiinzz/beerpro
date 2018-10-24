@@ -1,11 +1,13 @@
 package ch.beerpro.presentation.details;
 
+import androidx.annotation.Nullable;
 import ch.beerpro.GlideApp;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Rating;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -15,21 +17,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ch.beerpro.presentation.utils.EntityDiffItemCallback;
-import com.bumptech.glide.Glide;
+
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.text.DateFormat;
 
 
-public class RatingsRecyclerViewAdapter extends ListAdapter<Rating, RatingsRecyclerViewAdapter.ViewHolder> {
+public class DetailsRecyclerViewAdapter extends ListAdapter<Rating, DetailsRecyclerViewAdapter.ViewHolder> {
 
     private static final EntityDiffItemCallback<Rating> DIFF_CALLBACK = new EntityDiffItemCallback<>();
 
-    private final OnRatingLikedListener listener;
+    private final OnDetailInteractionListener listener;
     private FirebaseUser user;
 
-    public RatingsRecyclerViewAdapter(OnRatingLikedListener listener, FirebaseUser user) {
+    public DetailsRecyclerViewAdapter(OnDetailInteractionListener listener, FirebaseUser user) {
         super(DIFF_CALLBACK);
         this.listener = listener;
         this.user = user;
@@ -79,7 +81,7 @@ public class RatingsRecyclerViewAdapter extends ListAdapter<Rating, RatingsRecyc
             ButterKnife.bind(this, itemView);
         }
 
-        void bind(Rating item, OnRatingLikedListener listener) {
+        void bind(Rating item, OnDetailInteractionListener listener) {
             comment.setText(item.getComment());
 
             ratingBar.setNumStars(5);

@@ -3,9 +3,11 @@ package ch.beerpro.presentation.details;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -20,23 +22,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Optional;
 import ch.beerpro.GlideApp;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Rating;
 import ch.beerpro.domain.models.Wish;
 import ch.beerpro.presentation.details.createrating.CreateRatingActivity;
-import com.bumptech.glide.Glide;
+
 import com.bumptech.glide.request.RequestOptions;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static ch.beerpro.presentation.utils.DrawableHelpers.setDrawableTint;
 
-public class DetailsActivity extends AppCompatActivity implements OnRatingLikedListener {
+public class DetailsActivity extends AppCompatActivity implements OnDetailInteractionListener {
 
     public static final String ITEM_ID = "item_id";
     private static final String TAG = "DetailsActivity";
@@ -76,7 +76,10 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    private RatingsRecyclerViewAdapter adapter;
+    @BindView(R.id.shareBeer)
+    Button share;
+
+    private DetailsRecyclerViewAdapter adapter;
 
     private DetailsViewModel model;
 
@@ -92,7 +95,12 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
                 .setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         toolbar.setTitleTextColor(Color.alpha(0));
 
-        String beerId = getIntent().getExtras().getString(ITEM_ID);
+        String beerId;
+        if (getIntent().getExtras().getString(ITEM_ID) != null) {
+            beerId = getIntent().getExtras().getString(ITEM_ID);
+        } else {
+            beerId = getIntent().getData().getQueryParameter("data");
+        }
 
         model = ViewModelProviders.of(this).get(DetailsViewModel.class);
         model.setBeerId(beerId);
@@ -100,7 +108,7 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new RatingsRecyclerViewAdapter(this, model.getCurrentUser());
+        adapter = new DetailsRecyclerViewAdapter(this, model.getCurrentUser());
         recyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
 
         model.getBeer().observe(this, this::updateBeer);
@@ -109,6 +117,8 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
 
         recyclerView.setAdapter(adapter);
         addRatingBar.setOnRatingBarChangeListener(this::addNewRating);
+
+        share.setOnClickListener(v -> onShareListener());
     }
 
     private void addNewRating(RatingBar ratingBar, float v, boolean b) {
@@ -147,6 +157,16 @@ public class DetailsActivity extends AppCompatActivity implements OnRatingLikedL
     @Override
     public void onRatingLikedListener(Rating rating) {
         model.toggleLike(rating);
+    }
+
+    public void onShareListener() {
+        Beer beer = model.getBeer().getValue();
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBodyText = "Probier doch das geniale Bier '" + beer.getName() + "'\nhttp://www.beers.com/detail?data=" + beer.getId();
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Teilen eines Biers");
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBodyText);
+        startActivity(Intent.createChooser(sharingIntent, "Sharing Option"));
     }
 
     @OnClick(R.id.wishlist)

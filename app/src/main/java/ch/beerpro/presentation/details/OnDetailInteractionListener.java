@@ -1,7 +1,8 @@
 package ch.beerpro.presentation.details;
 
+import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.Rating;
 
-interface OnRatingLikedListener {
+interface OnDetailInteractionListener {
     void onRatingLikedListener(Rating rating);
 }
