@@ -8,6 +8,7 @@
     <color name="textSecondary">@android:color/darker_gray</color>
     <color name="textToolbar">@color/colorAccent</color>
     <color name="lineSubtle">#0f5d4037</color>
+    <color name="icon">@color/colorAccent</color>
     <color name="windowBackground">#fffde7</color>
     <color name="windowBackgroundSecondary">#dddddd</color>
     <color name="cardBackground">#ffffff</color>
