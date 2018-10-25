@@ -2,9 +2,11 @@ package ch.beerpro.presentation.profile.mybeers;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.widget.SearchView;
@@ -40,7 +42,12 @@ public class MyBeersActivity extends BaseActivity implements OnMyBeerItemInterac
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_my_beers, menu);
-        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        searchItem.getIcon().setColorFilter(getColor(R.color.textToolbar), PorterDuff.Mode.SRC_ATOP);
+
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        EditText searchEditText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+        searchEditText.setHintTextColor(getResources().getColor(R.color.textSubtle));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
