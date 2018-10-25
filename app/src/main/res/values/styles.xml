@@ -51,14 +51,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="AppTheme" />
 
-    <style name="AppTabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">?attr/colorAccent</item>
-        <item name="tabMaxWidth">256dp</item>
-        <item name="tabIndicatorGravity">bottom</item>
-        <item name="tabIndicatorHeight">4dp</item>
-        <item name="tabPaddingStart">6dp</item>
-        <item name="tabPaddingEnd">6dp</item>
-        <!--<item name="android:layout_marginLeft">64dp</item>
-        <item name="android:layout_marginRight">64dp</item>-->
+    <style name="TabStyle" parent="Widget.Design.TabLayout">
+        <item name="android:textColorSecondary">@color/textSubtle</item>
     </style>
 </resources>
