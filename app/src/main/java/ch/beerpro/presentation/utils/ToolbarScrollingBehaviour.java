@@ -51,7 +51,7 @@ public class ToolbarScrollingBehaviour<V extends View> extends CoordinatorLayout
                 Math.max(Math.min((int) (255 * alpha), 255), 0));
         toolbarLayout.setBackgroundColor(newToolbarColor);
 
-        int newToolbarTextColor = ColorUtils.setAlphaComponent(resources.getColor(R.color.colorAccent),
+        int newToolbarTextColor = ColorUtils.setAlphaComponent(resources.getColor(R.color.textToolbar),
                 Math.max(Math.min((int) (255 * alpha), 255), 0));
         toolbar.setTitleTextColor(newToolbarTextColor);
 
