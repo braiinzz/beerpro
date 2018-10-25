@@ -1,14 +1,9 @@
 package ch.beerpro.presentation.splash;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import ch.beerpro.R;
-import ch.beerpro.presentation.MainActivity;
-import ch.beerpro.domain.models.User;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,7 +13,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Arrays;
 import java.util.List;
 
-public class SplashScreenActivity extends AppCompatActivity {
+import ch.beerpro.R;
+import ch.beerpro.domain.models.User;
+import ch.beerpro.presentation.BaseActivity;
+import ch.beerpro.presentation.MainActivity;
+
+public class SplashScreenActivity extends BaseActivity {
 
     private static final String TAG = "SplashScreenActivity";
 

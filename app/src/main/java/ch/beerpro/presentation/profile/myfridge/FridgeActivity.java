@@ -1,19 +1,5 @@
 package ch.beerpro.presentation.profile.myfridge;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import ch.beerpro.R;
-import ch.beerpro.domain.models.Beer;
-import ch.beerpro.domain.models.FridgeItem;
-import ch.beerpro.presentation.details.DetailsActivity;
-import ch.beerpro.presentation.utils.OnFridgeInteractionListener;
-import lombok.val;
-
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +10,21 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-public class FridgeActivity extends AppCompatActivity implements OnFridgeInteractionListener {
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import ch.beerpro.R;
+import ch.beerpro.domain.models.Beer;
+import ch.beerpro.domain.models.FridgeItem;
+import ch.beerpro.presentation.BaseActivity;
+import ch.beerpro.presentation.details.DetailsActivity;
+import ch.beerpro.presentation.utils.OnFridgeInteractionListener;
+import lombok.val;
+
+public class FridgeActivity extends BaseActivity implements OnFridgeInteractionListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -56,7 +56,7 @@ public class FridgeActivity extends AppCompatActivity implements OnFridgeInterac
         recyclerView.setAdapter(adapter);
     }
 
-    private void updateFridge(List<Pair<FridgeItem,Beer>> pairs) {
+    private void updateFridge(List<Pair<FridgeItem, Beer>> pairs) {
         adapter.submitList(pairs);
         if (pairs.isEmpty()) {
             emptyView.setVisibility(View.VISIBLE);

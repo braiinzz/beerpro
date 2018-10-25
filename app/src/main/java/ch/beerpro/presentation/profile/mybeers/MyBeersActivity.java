@@ -7,9 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import org.apache.commons.lang3.NotImplementedException;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
@@ -18,9 +15,10 @@ import butterknife.ButterKnife;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Beer;
 import ch.beerpro.domain.models.FridgeItem;
+import ch.beerpro.presentation.BaseActivity;
 import ch.beerpro.presentation.details.DetailsActivity;
 
-public class MyBeersActivity extends AppCompatActivity implements OnMyBeerItemInteractionListener {
+public class MyBeersActivity extends BaseActivity implements OnMyBeerItemInteractionListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;

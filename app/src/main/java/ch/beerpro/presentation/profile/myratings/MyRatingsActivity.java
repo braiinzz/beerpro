@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.MenuItem;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
@@ -14,12 +15,13 @@ import butterknife.ButterKnife;
 import ch.beerpro.R;
 import ch.beerpro.domain.models.Rating;
 import ch.beerpro.domain.models.Wish;
+import ch.beerpro.presentation.BaseActivity;
 import ch.beerpro.presentation.details.DetailsActivity;
 import lombok.val;
 
 import java.util.List;
 
-public class MyRatingsActivity extends AppCompatActivity implements OnMyRatingItemInteractionListener {
+public class MyRatingsActivity extends BaseActivity implements OnMyRatingItemInteractionListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -51,7 +53,7 @@ public class MyRatingsActivity extends AppCompatActivity implements OnMyRatingIt
 
     }
 
-    private void updateMyRatings(List<Pair<Rating,Wish>> entries) {
+    private void updateMyRatings(List<Pair<Rating, Wish>> entries) {
         adapter.submitList(entries);
     }
 
