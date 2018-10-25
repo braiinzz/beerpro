@@ -21,6 +21,7 @@ import ch.beerpro.presentation.explore.BeerManufacturersFragment;
 import ch.beerpro.presentation.explore.ExploreFragment;
 import ch.beerpro.presentation.profile.ProfileFragment;
 import ch.beerpro.presentation.ratings.RatingsFragment;
+import ch.beerpro.presentation.settings.SettingsActivity;
 import ch.beerpro.presentation.splash.SplashScreenActivity;
 import ch.beerpro.presentation.utils.ViewPagerAdapter;
 
@@ -112,6 +113,9 @@ public class MainActivity extends BaseActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
             case R.id.action_logout:
                 logout();
                 return true;

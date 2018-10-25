@@ -107,4 +107,9 @@
     <string name="fridge_amount_description">Anzahl im Kühlschrank</string>
     <string name="beer">Bier</string>
     <string name="beers">Biere</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="pref_dark_mode_title">Dark Mode</string>
+    <string name="pref_dark_mode_summary_on">Dark Mode aktiviert</string>
+    <string name="pref_dark_mode_summary_off">Dark Mode deaktiviert</string>
+    <string name="pref_dark_mode_key" translatable="false">dark_mode</string>
 </resources>
