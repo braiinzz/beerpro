@@ -107,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_weight="1"
-            android:background="#ffeeeeee"
+            android:background="@color/lineSubtle"
             app:layout_constraintBottom_toTopOf="@+id/actionsLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -138,7 +138,7 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#ffeeeeee" />
+                android:background="@color/lineSubtle" />
 
             <Button
                 android:id="@+id/wishlist"
@@ -155,7 +155,7 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#ffeeeeee" />
+                android:background="@color/lineSubtle" />
 
             <Button
                 android:id="@+id/like"

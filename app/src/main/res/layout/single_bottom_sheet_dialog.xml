@@ -27,7 +27,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="#ffeeeeee" />
+            android:background="@color/lineSubtle" />
 
         <Button
             android:id="@+id/addPrice"
@@ -46,7 +46,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#ffeeeeee" />
+        android:background="@color/lineSubtle" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="#ffeeeeee" />
+            android:background="@color/lineSubtle" />
 
         <Button
             android:id="@+id/addPrivateNote"

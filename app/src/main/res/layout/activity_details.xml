@@ -109,7 +109,7 @@
                             android:layout_height="1dp"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="32dp"
-                            android:background="#ffeeeeee"
+                            android:background="@color/lineSubtle"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
@@ -151,7 +151,7 @@
                             android:layout_height="1dp"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
-                            android:background="#ffeeeeee"
+                            android:background="@color/lineSubtle"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/category" />
 
@@ -191,7 +191,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginTop="8dp"
-                            android:background="#ffeeeeee"
+                            android:background="@color/lineSubtle"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/addRatingExplanation" />
@@ -219,7 +219,7 @@
                             <View
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
-                                android:background="#ffeeeeee" />
+                                android:background="@color/lineSubtle" />
 
                             <ToggleButton
                                 android:id="@+id/wishlist"
@@ -237,7 +237,7 @@
                             <View
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
-                                android:background="#ffeeeeee" />
+                                android:background="@color/lineSubtle" />
 
                             <Button
                                 android:id="@+id/shareBeer"
