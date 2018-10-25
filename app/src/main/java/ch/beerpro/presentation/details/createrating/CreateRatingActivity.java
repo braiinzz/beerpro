@@ -145,7 +145,7 @@ public class CreateRatingActivity extends BaseActivity {
                         setActiveWidgetColor(getResources().getColor(R.color.colorAccent));
                         setCropFrameColor(getResources().getColor(R.color.colorAccent));
                         setCropGridColor(getResources().getColor(R.color.colorAccent));
-                        setDimmedLayerColor(getResources().getColor(R.color.windowBackgroundColor));
+                        setDimmedLayerColor(getResources().getColor(R.color.windowBackground));
                         setHideBottomControls(true);
                     }
                 };

@@ -5,5 +5,7 @@
     <color name="colorAccent">#fdd835</color>
 
     <color name="textSecondary">@android:color/darker_gray</color>
-    <color name="windowBackgroundColor">#202020</color>
+    <color name="windowBackground">#202020</color>
+    <color name="windowBackgroundSecondary">#464646</color>
+    <color name="cardBackground">#2d2d2d</color>
 </resources>
