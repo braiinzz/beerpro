@@ -63,7 +63,6 @@
                     android:layout_marginBottom="8dp"
                     android:paddingBottom="48dp"
                     android:text="Füge deiner Bewertung ein Foto hinzu"
-                    android:textColor="@android:color/black"
                     android:textStyle="italic" />
 
             </androidx.cardview.widget.CardView>
