@@ -10,4 +10,5 @@
     <dimen name="listentry_text_size">12sp</dimen>
     <dimen name="listentry_button_text_size">10sp</dimen>
     <dimen name="listentry_margin_bottom">8dp</dimen>
+    <dimen name="main_title_margin_start">28dp</dimen>
 </resources>
