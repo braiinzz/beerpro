@@ -119,12 +119,12 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
                 onTheListSince.setText("auf der Wunschliste seit");
             } else if (entry instanceof MyBeerFromFridge) {
                 DrawableHelpers.setDrawableTint(removeFromWishlist,
-                        itemView.getResources().getColor(android.R.color.darker_gray));
+                        itemView.getResources().getColor(R.color.textSecondary));
                 removeFromWishlist.setText("Wunschliste");
                 onTheListSince.setText("zuletzt im Kühlschrank bearbeitet");
             } else if (entry instanceof MyBeerFromRating) {
                 DrawableHelpers.setDrawableTint(removeFromWishlist,
-                        itemView.getResources().getColor(android.R.color.darker_gray));
+                        itemView.getResources().getColor(R.color.textSecondary));
                 removeFromWishlist.setText("Wunschliste");
                 onTheListSince.setText("beurteilt am");
             }

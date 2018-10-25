@@ -105,7 +105,7 @@ public class DetailsRecyclerViewAdapter extends ListAdapter<Rating, DetailsRecyc
             if (item.getLikes().containsKey(user.getUid())) {
                 like.setColorFilter(itemView.getResources().getColor(R.color.colorPrimary));
             } else {
-                like.setColorFilter(itemView.getResources().getColor(android.R.color.darker_gray));
+                like.setColorFilter(itemView.getResources().getColor(R.color.textSecondary));
             }
             if (listener != null) {
                 like.setOnClickListener(v -> listener.onRatingLikedListener(item));

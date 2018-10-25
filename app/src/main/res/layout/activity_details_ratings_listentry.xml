@@ -85,7 +85,7 @@
             android:background="@drawable/selectable_item_background_white"
             android:clickable="true"
             android:padding="8dp"
-            android:tint="@android:color/darker_gray"
+            android:drawableTint="@color/textSecondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/numLikes"
             app:srcCompat="@drawable/ic_thumb_up_black_24dp" />

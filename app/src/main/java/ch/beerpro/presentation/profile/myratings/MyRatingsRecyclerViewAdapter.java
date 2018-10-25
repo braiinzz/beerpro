@@ -129,7 +129,7 @@ public class MyRatingsRecyclerViewAdapter
                 int color = itemView.getResources().getColor(R.color.colorPrimary);
                 setDrawableTint(wishlist, color);
             } else {
-                int color = itemView.getResources().getColor(android.R.color.darker_gray);
+                int color = itemView.getResources().getColor(R.color.textSecondary);
                 setDrawableTint(wishlist, color);
             }
 

@@ -186,7 +186,7 @@ public class DetailsActivity extends BaseActivity implements OnDetailInteraction
             setDrawableTint(wishlist, color);
             wishlist.setChecked(true);
         } else {
-            int color = getResources().getColor(android.R.color.darker_gray);
+            int color = getResources().getColor(R.color.textSecondary);
             setDrawableTint(wishlist, color);
             wishlist.setChecked(false);
         }

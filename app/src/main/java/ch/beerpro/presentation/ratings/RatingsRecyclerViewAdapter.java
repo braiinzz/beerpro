@@ -131,7 +131,7 @@ public class RatingsRecyclerViewAdapter extends ListAdapter<Pair<Rating, Wish>, 
                 int color = fragment.getResources().getColor(R.color.colorPrimary);
                 setDrawableTint(like, color);
             } else {
-                int color = fragment.getResources().getColor(android.R.color.darker_gray);
+                int color = fragment.getResources().getColor(R.color.textSecondary);
                 setDrawableTint(like, color);
             }
 
@@ -139,7 +139,7 @@ public class RatingsRecyclerViewAdapter extends ListAdapter<Pair<Rating, Wish>, 
                 int color = fragment.getResources().getColor(R.color.colorPrimary);
                 setDrawableTint(wishlist, color);
             } else {
-                int color = fragment.getResources().getColor(android.R.color.darker_gray);
+                int color = fragment.getResources().getColor(R.color.textSecondary);
                 setDrawableTint(wishlist, color);
             }
 

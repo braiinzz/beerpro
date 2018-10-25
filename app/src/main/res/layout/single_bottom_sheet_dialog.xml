@@ -18,9 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_place_black_24dp"
-            android:drawableTint="@android:color/darker_gray"
+            android:drawableTint="@color/textSecondary"
             android:text="Ort Hinzufügen"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/textSecondary"
             android:textSize="10sp" />
 
         <View
@@ -35,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_attach_money_black_24dp"
-            android:drawableTint="@android:color/darker_gray"
+            android:drawableTint="@color/textSecondary"
             android:text="Meinen Preis Hinzufügen"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/textSecondary"
             android:textSize="10sp" />
 
     </LinearLayout>
@@ -59,9 +59,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_refrigerator"
-            android:drawableTint="@android:color/darker_gray"
+            android:drawableTint="@color/textSecondary"
             android:text="In den Kühlschrank"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/textSecondary"
             android:textSize="10sp" />
 
         <View
@@ -76,9 +76,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_create_black_24dp"
-            android:drawableTint="@android:color/darker_gray"
+            android:drawableTint="@color/textSecondary"
             android:text="Private Notiz hinzufügen"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/textSecondary"
             android:textSize="10sp" />
 
 

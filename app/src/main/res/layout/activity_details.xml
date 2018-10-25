@@ -83,7 +83,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
-                            android:color="@android:color/darker_gray"
+                            android:color="@color/textSecondary"
                             android:text="3 Bewertungen"
                             android:textSize="12sp"
                             app:layout_constraintBaseline_toBaselineOf="@+id/avgRating"
@@ -211,9 +211,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:drawableTop="@drawable/ic_more_horiz_black_24dp"
-                                android:drawableTint="@android:color/darker_gray"
+                                android:drawableTint="@color/textSecondary"
                                 android:text="Aktionen"
-                                android:textColor="@android:color/darker_gray"
+                                android:textColor="@color/textSecondary"
                                 android:textSize="10sp" />
 
                             <View
@@ -228,10 +228,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:drawableTop="@drawable/ic_bookmark_brown_24dp"
-                                android:drawableTint="@android:color/darker_gray"
+                                android:drawableTint="@color/textSecondary"
                                 android:textOff="Wunschliste"
                                 android:textOn="Wunschliste"
-                                android:textColor="@android:color/darker_gray"
+                                android:textColor="@color/textSecondary"
                                 android:textSize="10sp" />
 
                             <View
@@ -246,9 +246,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:drawableTop="@drawable/ic_share_black_24dp"
-                                android:drawableTint="@android:color/darker_gray"
+                                android:drawableTint="@color/textSecondary"
                                 android:text="Bier Teilen"
-                                android:textColor="@android:color/darker_gray"
+                                android:textColor="@color/textSecondary"
                                 android:textSize="10sp" />
                         </LinearLayout>
 

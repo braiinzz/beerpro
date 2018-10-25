@@ -43,9 +43,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/ic_exposure_plus_1_black_24dp"
-        android:drawableTint="@color/colorPrimary"
+        android:drawableTint="@color/textSecondary"
         android:text="Hinzufügen"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@color/textSecondary"
         android:textSize="@dimen/listentry_button_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,9 +57,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/ic_exposure_neg_1_black_24dp"
-        android:drawableTint="@color/colorPrimary"
+        android:drawableTint="@color/textSecondary"
         android:text="Entfernen"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@color/textSecondary"
         android:textSize="@dimen/listentry_button_text_size"
         app:layout_constraintEnd_toStartOf="@+id/addToFridge" />
 </androidx.constraintlayout.widget.ConstraintLayout>

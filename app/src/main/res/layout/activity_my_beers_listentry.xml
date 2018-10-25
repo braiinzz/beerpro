@@ -59,7 +59,7 @@
                 android:drawableTop="@drawable/ic_bookmark_brown_24dp"
                 android:drawableTint="@color/colorPrimary"
                 android:text="Entfernen"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@color/textSecondary"
                 android:textSize="@dimen/listentry_button_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
