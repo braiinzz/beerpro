@@ -126,7 +126,7 @@ public class MyRatingsRecyclerViewAdapter
             like.setVisibility(View.GONE);
 
             if (wish != null) {
-                int color = itemView.getResources().getColor(R.color.colorPrimary);
+                int color = itemView.getResources().getColor(R.color.colorHighlight);
                 setDrawableTint(wishlist, color);
             } else {
                 int color = itemView.getResources().getColor(R.color.textSecondary);

@@ -103,7 +103,7 @@ public class DetailsRecyclerViewAdapter extends ListAdapter<Rating, DetailsRecyc
 
             numLikes.setText(itemView.getResources().getString(R.string.fmt_num_ratings, item.getLikes().size()));
             if (item.getLikes().containsKey(user.getUid())) {
-                like.setColorFilter(itemView.getResources().getColor(R.color.colorPrimary));
+                like.setColorFilter(itemView.getResources().getColor(R.color.colorHighlight));
             } else {
                 like.setColorFilter(itemView.getResources().getColor(R.color.textSecondary));
             }

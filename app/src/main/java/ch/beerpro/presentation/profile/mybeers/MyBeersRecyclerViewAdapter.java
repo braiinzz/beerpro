@@ -115,7 +115,7 @@ public class MyBeersRecyclerViewAdapter extends ListAdapter<MyBeer, MyBeersRecyc
 
             if (entry instanceof MyBeerFromWishlist) {
                 DrawableHelpers
-                        .setDrawableTint(removeFromWishlist, itemView.getResources().getColor(R.color.colorPrimary));
+                        .setDrawableTint(removeFromWishlist, itemView.getResources().getColor(R.color.colorHighlight));
                 onTheListSince.setText("auf der Wunschliste seit");
             } else if (entry instanceof MyBeerFromFridge) {
                 DrawableHelpers.setDrawableTint(removeFromWishlist,

@@ -182,7 +182,7 @@ public class DetailsActivity extends BaseActivity implements OnDetailInteraction
 
     private void toggleWishlistView(Wish wish) {
         if (wish != null) {
-            int color = getResources().getColor(R.color.colorPrimary);
+            int color = getResources().getColor(R.color.colorHighlight);
             setDrawableTint(wishlist, color);
             wishlist.setChecked(true);
         } else {
